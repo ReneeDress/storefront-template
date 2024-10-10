@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<style>
+    /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    /* HTML5 display-role reset for older browsers */
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+        display: block;
+    }
+
+    body {
+        line-height: 1;
+    }
+
+    ol,
+    ul {
+        list-style: none;
+    }
+
+    blockquote,
+    q {
+        quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+        content: '';
+        content: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+</style>
+
+<head>
+    <style>
+        :root {
+            --cx-spatial-base: 0.5rem;
+            --cx-spatial-sm: calc(var(--cx-spatial-base) / 2);
+            --cx-spatial-md: calc(2 * var(--cx-spatial-base));
+            --cx-spatial-lg: calc(4 * var(--cx-spatial-base));
+            --cx-spatial-xl: calc(8 * var(--cx-spatial-base));
+
+            --cx-color-background: #ffffff;
+            --cx-color-background2: #efefef;
+            --cx-color-text: #060606;
+            --cx-color-inverse: #ffffff;
+            --cx-color-transparent: transparent;
+            --cx-color-primary: #060606;
+            --cx-color-secondary: #efefef;
+            --cx-color-success: #38871f;
+            --cx-color-info: #17a2b8;
+            --cx-color-warning: #ffc107;
+            --cx-color-danger: #db0002;
+            --cx-color-light: #f1f1f1;
+            --cx-color-dark: #6c7079;
+            --cx-color-primary-accent: #ED7F3B;
+            --cx-color-success-accent: #f0fbe4;
+            --cx-color-danger-accent: #fff1f1;
+            --cx-color-warning-accent: #fff5df;
+            --cx-color-info-accent: #deeffe;
+            --cx-color-medium: #d3d6db;
+            --cx-color-background-dark: #182734;
+            --cx-color-visual-focus: #6d9df7;
+            --cx-color-background-focus: rgba(80, 176, 244, 0.1);
+            --cx-color-border-focus: rgba(166, 204, 232, 0.6);
+            --cx-page-width-max: 1140px;
+            --cx-font-weight-light: 300;
+            --cx-font-weight-normal: 400;
+            --cx-font-weight-semi: 600;
+            --cx-font-weight-bold: 700;
+            --cx-text-transform: capitalize;
+            --cx-direction: ltr;
+            --cx-transition-duration: 0.5s;
+            --cx-animation-duration: 1s;
+            --cx-border-radius: 1em;
+            --cx-buttons-border-radius: 2rem;
+            --cx-buttons-border-width: 3px;
+            --cx-border-style: solid;
+
+            --cx-spinner-size: 40px;
+            --cx-spinner-radius: 120px;
+            --cx-spinner-border-width: 15px;
+            --cx-spinner-animation-time: 1s;
+            --cx-spinner-primary-color: var(--cx-color-primary);
+            --cx-spinner-secondary-color: var(--cx-color-light);
+
+            --btf-delay: 0.3s;
+            --btf-min-height: 100vh;
+            --btf-margin-top: 100vh;
+
+            --cx-color-ghost: #f1f1f1;
+            --cx-color-ghost-animation: rgba(255, 255, 255, 0.2);
+            --cx-ghost-radius: 5px;
+            --cx-ghost-margin: 10px;
+
+            --cx-popover-font-size: 0.875rem;
+            --cx-popover-background: var(--cx-color-inverse);
+            --cx-popover-min-width: 140px;
+            --cx-popover-max-width: 280px;
+            --cx-popover-border-width: 1px;
+            --cx-popover-border-color: var(--cx-color-light);
+            --cx-popover-border-radius: 5px;
+            --cx-popover-arrow-width: 1rem;
+            --cx-popover-arrow-height: 0.5rem;
+            --cx-popover-arrow-color: var(--cx-popover-background);
+            --cx-popover-z-index: 10;
+            --cx-popover-box-shadow-color: rgba(0, 0, 0, 0.1);
+
+            --cx-progress-button-radius: 24px;
+            --cx-progress-button-border-width: 3px;
+            --cx-progress-button-animation-time: 1s;
+            --cx-progress-button-primary-color: var(--cx-color-primary);
+            --cx-progress-button-secondary-color: var(--cx-color-inverse);
+
+            --cx-transition-duration: 0.3s;
+            --cx-split-gutter: 40px;
+            --cx-active-view: 1;
+        }
+    </style>
+
+    <style>
+        :root {
+            --sf-placeholder-light: #efefef;
+            --sf-placeholder-dark: #606060;
+        }
+    </style>
+
+    <style>
+        :root {
+            font-size: 16px;
+        }
+
+        *.v {
+            display: flex;
+            flex-direction: column;
+        }
+
+        *.h {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        header,
+        footer {
+            /* padding: 1rem 4rem; */
+            background: var(--cx-color-primary);
+            color: var(--cx-color-inverse);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            & .PreHeader {
+                width: 100%;
+                min-height: 2rem;
+                background: var(--cx-color-secondary);
+            }
+
+            & .SiteLogo,
+            div[class*=Content] {
+                flex: 1;
+                flex-direction: row;
+                align-items: center;
+
+
+            }
+
+            & .leftContent {
+                justify-content: left;
+                gap: 2rem;
+            }
+
+            & .rightContent {
+                justify-content: right;
+                gap: 2rem;
+            }
+
+            & .menu {
+                aspect-ratio: 1;
+                background-color: var(--sf-placeholder-dark);
+                color: var(--sf-placeholder-light);
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            & .searchBox {
+                min-width: 10rem;
+                padding: 0.5rem;
+                background-color: var(--cx-color-inverse);
+                color: var(--cx-colortext);
+                border: solid var(--cx-color-medium) .05rem;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+                align-items: center;
+
+                font-size: .75rem;
+            }
+        }
+
+        [class*=Content] {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .SiteLogo {
+            max-width: 20rem;
+            height: 3.5rem;
+            aspect-ratio: 1;
+            background-color: var(--sf-placeholder-dark);
+            color: var(--sf-placeholder-light);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer {
+            min-height: 20rem;
+        }
+
+        [class*=Section] {
+            &:nth-child(odd) {
+                background: var(--cx-color-background);
+            }
+
+            &:nth-child(even) {
+                background: var(--cx-color-background2);
+            }
+
+            /* padding: 1rem; */
+
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            &.v {
+                padding: 4rem;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            & .CarouselTitle {
+                font-size: 1.5rem;
+                font-weight: 100;
+                letter-spacing: .5rem;
+                text-transform: uppercase;
+            }
+
+            & .ProductRow {
+                width: 100%;
+                padding: 2rem 2rem 0rem;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+
+                & .ProductItem {
+                    width: 22%;
+
+                    & .ProductImg {
+                        width: 100%;
+                        /* border-radius: 1.5rem; */
+                        aspect-ratio: 2/3;
+                        background: url(https://coach.scene7.com/is/image/Coach/cv431_den_a0?$desktopProduct$);
+                        background-position: center;
+                        background-size: cover;
+                        background-color: var(--sf-placeholder-dark);
+                        color: var(--sf-placeholder-light);
+                        /* border: solid var(--cx-color-secondary) .25rem; */
+
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    & .ProductInfo {
+                        padding: 1rem 0;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    & .ProductName {
+                        font-weight: 100;
+                    }
+                }
+            }
+
+            & .Banner {
+                min-height: 20rem;
+                /* border-radius: 2rem; */
+                flex: 1;
+                background: url(https://cms.coach.com/i/coach/100824-ct-hp-m3?&w=960&sm=aspect&aspect=720:721&fmt=webp);
+                background-position: center;
+                background-size: cover;
+                background-color: var(--sf-placeholder-dark);
+                color: var(--sf-placeholder-light);
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="v">
+        <div class="PreHeader"></div>
+        <div class="h">
+            <div class="leftContent h">
+                <div class="menu">menu</div>
+                <div class="searchBox">
+                    Search Something
+                </div>
+            </div>
+            <div class="SiteLogo">
+                SiteLogo
+            </div>
+            <div class="rightContent h">
+                <div class="siteContext">siteContext</div>
+                <div class="account">account</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="Section1">
+            <div class="Banner" style="aspect-ratio: 235/100;">Banner</div>
+        </div>
+        <div class="Section2" style="padding: 1.5rem;">
+            <div class="Banner" style="aspect-ratio: 2/3;">Banner</div>
+            <div class="Banner" style="aspect-ratio: 2/3;">Banner</div>
+        </div>
+        <div class="Section3 v" style="background: var(--cx-color-background);">
+            <div class="CarouselTitle">Carousel Title</div>
+            <div class="ProductRow">
+                <div class="ProductItem" style="width: 50%;">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductRow" style="width: 45%; padding: 0;">
+                    <div class="ProductItem" style="width: 40%;">
+                        <div class="ProductImg">ProductImg</div>
+                        <div class="ProductInfo">
+                            <span class="ProductName">Product Name</span>
+                            <span>$99.99</span>
+                        </div>
+                    </div>
+                    <div class="ProductItem" style="width: 40%;">
+                        <div class="ProductImg">ProductImg</div>
+                        <div class="ProductInfo">
+                            <span class="ProductName">Product Name</span>
+                            <span>$99.99</span>
+                        </div>
+                    </div>
+                    <div class="ProductItem" style="width: 40%;">
+                        <div class="ProductImg">ProductImg</div>
+                        <div class="ProductInfo">
+                            <span class="ProductName">Product Name</span>
+                            <span>$99.99</span>
+                        </div>
+                    </div>
+                    <div class="ProductItem" style="width: 40%;">
+                        <div class="ProductImg">ProductImg</div>
+                        <div class="ProductInfo">
+                            <span class="ProductName">Product Name</span>
+                            <span>$99.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Section4">
+            <div class="Banner">Banner</div>
+            <div class="Banner">Banner</div>
+        </div>
+        <div class="Section5 v">
+            <div class="CarouselTitle">Carousel Title</div>
+            <div class="ProductRow">
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Section6 v">
+            <div class="CarouselTitle">Carousel Title</div>
+            <div class="ProductRow">
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+                <div class="ProductItem">
+                    <div class="ProductImg">ProductImg</div>
+                    <div class="ProductInfo">
+                        <span class="ProductName">Product Name</span>
+                        <span>$99.99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+</body>
+
+</html>

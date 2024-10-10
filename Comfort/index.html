@@ -309,7 +309,14 @@
         }
 
         [class*=Section] {
-            background: var(--cx-color-background);
+            &:nth-child(odd) {
+                background: var(--cx-color-background);
+            }
+
+            &:nth-child(even) {
+                background: var(--cx-color-inverse);
+            }
+
             display: flex;
             flex-direction: row;
 
@@ -334,9 +341,14 @@
                 align-items: center;
 
                 & .ProductItem {
+                    width: 15%;
+
                     & .ProductImg {
-                        min-width: 12rem;
+                        width: 100%;
                         aspect-ratio: 1;
+                        background: url(https://flowriser.blob.core.windows.net/flowriser/8524762415452.jpg?sp=r&st=2023-09-06T05:31:57Z&se=2025-09-06T13:31:57Z&spr=https&sv=2022-11-02&sr=c&sig=UlduquHDOoYbWwbjHC4uac9KxvpFjwNuqeeQzQxkZnQ%3D);
+                        background-position: center;
+                        background-size: contain;
                         background-color: var(--sf-placeholder-dark);
                         color: var(--sf-placeholder-light);
 
@@ -363,6 +375,9 @@
             & .Banner {
                 min-height: 20rem;
                 flex: 1;
+                background: url(https://flowriser.blob.core.windows.net/flowriser/8524762415452.jpg?sp=r&st=2023-09-06T05:31:57Z&se=2025-09-06T13:31:57Z&spr=https&sv=2022-11-02&sr=c&sig=UlduquHDOoYbWwbjHC4uac9KxvpFjwNuqeeQzQxkZnQ%3D);
+                background-position: center;
+                background-size: cover;
                 background-color: var(--sf-placeholder-dark);
                 color: var(--sf-placeholder-light);
 
